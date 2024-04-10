@@ -1,0 +1,20 @@
+library(readr)
+library(readxl)
+library(dplyr)
+library(ggplate)
+
+#Fill out
+tissue=''
+batch=''
+
+
+
+#load RNA Summary
+rnasum = read_excel('')
+sumfilt= transform(rnasum, RIN_status = ifelse(RIN < 5, "Failed", "Good")
+
+
+png(paste0(tissue, "_batch", batch, ".png"), width = 10, height = 6, unit = "in", res = 300)
+rin_filt <- plate_plot(data = sumfilt, position = scan_position, value = RIN_status, label = RIN_status, plate_type = "round", title = paste0(tissue, "_batch", batch, "_RINstatus"), colour = c("grey", "green"))
+print(rin_filt)
+dev.off()
