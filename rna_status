@@ -3,15 +3,21 @@ library(readxl)
 library(dplyr)
 library(ggplate)
 
+#Insert file path
+filepath=''
+
+#Create directory for results to go into 
+dir.create(paste0(filepath, "/png/")
+
 #Fill out
 tissue=''
 batch=''
 
-
-
 #load RNA Summary
 rnasum = read_excel('')
 sumfilt= transform(rnasum, RIN_status = ifelse(RIN < 5, "Failed", "Good")
+
+
 
 
 png(paste0(tissue, "_batch", batch, ".png"), width = 10, height = 6, unit = "in", res = 300)
