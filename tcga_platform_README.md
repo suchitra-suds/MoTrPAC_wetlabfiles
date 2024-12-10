@@ -7,13 +7,6 @@ This application provides a streamlined platform for researchers and data scient
 2. **Data Viewing and Preprocessing:** Enable efficient visualization and preparation of datasets for downstream analysis.
 3. **Machine Learning Analysis:** Facilitate exploratory and predictive modeling using integrated datasets, with minimal setup.
 
-## Why Use This App?
-- **Efficiency:** Automates the complex workflows of querying, downloading, and preparing TCGA data.
-- **Visualization:** Offers intuitive tools for exploring gene-specific and clinical datasets.
-- **Integration:** Combines gene expression and clinical metadata for comprehensive analysis.
-- **Machine Learning Ready:** Provides encoded datasets and tools to train and evaluate machine learning models.
-- **User-Friendly:** Designed with a step-by-step interface for seamless navigation.
-
 ## Features
 1. **Data Download:**
    - Query and download gene expression, metadata, and clinical data for TCGA projects.
