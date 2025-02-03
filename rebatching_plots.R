@@ -32,14 +32,21 @@ for (i in 1:23) {
   sapply(file.path(dna_dir, dna_subfolders), dir.create, showWarnings = FALSE)
 }
 
-#to rebatch
+#Rebatching
+
+library(readr)
+library(ggplate)
+library(ggplate)
+library(dplyr)
+library(ggplot2)
+
+samples=read.csv('/Volumes/suchitra/tranche_4/blood/rebatching/rebatched_by_orig_box_tranche4blood.csv')
+data=samples
 
 
-generate_ggplate <- function(data, box_id) {
-  # Filter data for the specific box
+generate_ggplate <- function(data, box_id, index) {
   box_data <- data %>% filter(Box == box_id)
   
-
   p <- plate_plot(
     data = box_data,
     position = Position,
@@ -47,22 +54,20 @@ generate_ggplate <- function(data, box_id) {
     label = new_batch,
     plate_size = 96,
     plate_type = "round",
-    colour =c("#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E3BAFF"),
+    colour = colors,
     show_legend = TRUE
   ) +
     ggtitle(paste("Plate for Box:", box_id)) +
-    theme_minimal() 
+    theme_minimal()
   
   print(p)
   
-  ggsave(paste0("ggplate_", box_id, ".png"), plot = p, width = 8, height = 6)
+  filename = paste0(index, "_", box_id, ".png")
+  ggsave(filename, plot = p, width = 8, height = 6)
 }
 
 unique_boxes <- unique(data$Box)
 
-#saves plot for each unique box
-for (box_id in unique_boxes) {
-  generate_ggplate(data, box_id)
+for (i in seq_along(unique_boxes)) {
+  generate_ggplate(data, unique_boxes[i], i)
 }
-
-
