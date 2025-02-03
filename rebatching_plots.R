@@ -12,6 +12,29 @@ library(ggplate)
 library(dplyr)
 
 
+#use this base code to set up all your folders:
+base_dir = "/Volumes/suchitra/tranche_4/blood"
+
+#change 1:x
+for (i in 1:23) {
+  batch_dir = file.path(base_dir, paste0("batch_", i))
+  dir.create(batch_dir, recursive = TRUE, showWarnings = FALSE)
+  
+  rna_dir = file.path(batch_dir, "rna")
+  dna_dir = file.path(batch_dir, "dna")
+  dir.create(rna_dir, showWarnings = FALSE)
+  dir.create(dna_dir, showWarnings = FALSE)
+  
+  rna_subfolders = c("fragment_analyzer", "qubit", "normalization")
+  sapply(file.path(rna_dir, rna_subfolders), dir.create, showWarnings = FALSE)
+  
+  dna_subfolders = c("fragment_analyzer", "quantit", "pooling", "iseq")
+  sapply(file.path(dna_dir, dna_subfolders), dir.create, showWarnings = FALSE)
+}
+
+#to rebatch
+
+
 generate_ggplate <- function(data, box_id) {
   # Filter data for the specific box
   box_data <- data %>% filter(Box == box_id)
